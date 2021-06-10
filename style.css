@@ -1,6 +1,10 @@
 body {
     background-color: #404040;
 }
+h6 {
+    font-family: 'Yellowtail';
+    font-size: 22px;
+}
 
   .button2 {
     padding: 4px 10px;

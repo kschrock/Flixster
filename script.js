@@ -39,18 +39,30 @@ function generateHTML(movieData) {
     for(i; i<movieData.results.length; i++){
     let title = movieData.results[i].title;
     let poster_path = movieData.results[i].poster_path;
+    let backdrop_path = movieData.results[i].backdrop_path;
     let vote = movieData.results[i].vote_average;
+    let info = movieData.results[i].overview;
+    let release_Date = movieData.results[i].release_date;
+    //console.log(movieData);
     let myimage = new Image();
      myimage.src = 'https://image.tmdb.org/t/p/w500/' + poster_path;
-     //console.log(movieData)
+
+     let backDropImage = new Image();
+     backDropImage.src = 'https://image.tmdb.org/t/p/w500/' + backdrop_path;
+     
     movieArea.innerHTML += `
-        <div class="card mb-4">
-            <img src="${myimage.src}" alt="${title}" class="card-img-top img-fluid"/>
+        <div class="card mb-4" > 
+            <a class="btn btn-success" onclick="exampleOnclick(this,'${title}','${release_Date}','${vote}')">
+                <img class="card-img-top img-fluid" src="${myimage.src}" alt="${title}"/>
+                <img hidden id="backdrop" class="card-img-top img-fluid" src="${backDropImage.src}" alt="${title}"/>
+                <p hidden id="info" > ${info}</p>
+            </a>
             <div class="card-body">
                 <p class="card-text text-left">&#11088; &nbsp; ${vote}</p>
-                <h5 class="card-title">${title}</h5>
+                <h6 class="card-title">${title}</h6>
             </div>
         </div>
+        
     `;
     if(counter%2 == 0){
         movieArea.innerHTML += `
@@ -77,6 +89,68 @@ function generateHTML(movieData) {
 }
   }
 
+  function exampleOnclick(btn, movieTitle, movieRelease, movieRated) {
+    var name = btn.innerHTML;
+    var backdrop = btn.querySelector('#backdrop').src;
+    let movieString = "| " + movieRelease + " | " + "&#11088; &nbsp;" + movieRated + " |";
+    let backDropImage = new Image();
+     backDropImage.src = 'https://image.tmdb.org/t/p/w500/' + backdrop;
+    var info = btn.querySelector('#info').textContent;
+    var exampleModal = getExampleModal();
+    // Init the modal if it hasn't been already.
+    if (!exampleModal) { exampleModal = initExampleModal(); }
+  
+    var html =
+        '<div class="modal-header">' +
+          '<h5 class="modal-title" id="exampleModalLabel">'+ movieTitle + '</h5>' +
+          '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+            '<span aria-hidden="true">&times;</span>' +
+          '</button>' +
+        '</div>' +
+        '<div class="modal-body">' +
+        '<div class="modal-content modal-popout-bg">' +
+        '<img class="card-img-top img-fluid" src="'+ backDropImage.src+ '" alt="${title}"/>' +
+        '</div>' +
+        '<p>' +
+        movieString + 
+        '</p>' +
+        info +
+        '</div>' +
+        '<div class="modal-footer">' +
+          '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+        '</div>';
+  
+    setExampleModalContent(html);
+  
+    // Show the modal.
+    jQuery(exampleModal).modal('show');
+  
+  }
+  
+  function getExampleModal() {
+    return document.getElementById('exampleModal');
+  }
+  
+  function setExampleModalContent(html) {
+    getExampleModal().querySelector('.modal-content').innerHTML = html;
+  }
+  
+  function initExampleModal() {
+    var modal = document.createElement('div');
+    modal.classList.add('modal', 'fade');
+    modal.setAttribute('id', 'exampleModal');
+    modal.setAttribute('tabindex', '-1');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-labelledby', 'exampleModalLabel');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.innerHTML =
+          '<div class="modal-dialog" role="document">' +
+            '<div class="modal-content"></div>' +
+          '</div>';
+    document.body.appendChild(modal);
+    return modal;
+  }
+
   async function getResults(event){
     event.preventDefault();
     let apiKey = "api_key=e0fd5a0f660971376c9527b4a5b7e104"
@@ -95,12 +169,9 @@ function generateHTML(movieData) {
             finalText = finalText + "+" + value;
         }
       }); 
-    //console.log(finalText);
     let finalUrl = url + String(finalText);
     const response = await fetch(finalUrl);
     const searchedMovies = await response.json();
-    //console.log(searchedMovies);
-    //console.log(finalUrl);
     generateHTML2(searchedMovies);
 
   }
@@ -112,18 +183,29 @@ function generateHTML(movieData) {
     for(i; i<movieData.results.length; i++){
     let title = movieData.results[i].title;
     let poster_path = movieData.results[i].poster_path;
+    let backdrop_path = movieData.results[i].backdrop_path;
     let vote = movieData.results[i].vote_average;
+    let info = movieData.results[i].overview;
+    let release_Date = movieData.results[i].release_date;
     let myimage = new Image();
      myimage.src = 'https://image.tmdb.org/t/p/w500/' + poster_path;
      //console.log(movieData)
+    let backDropImage = new Image();
+    backDropImage.src = 'https://image.tmdb.org/t/p/w500/' + backdrop_path;
+
     movieArea.innerHTML += `
-        <div class="card mb-4">
-            <img src="${myimage.src}" alt="${title}" class="card-img-top img-fluid"/>
+        <div class="card mb-4" > 
+            <a class="btn btn-primary" onclick="exampleOnclick(this,'${title}','${release_Date}','${vote}')">
+                <img class="card-img-top img-fluid" src="${myimage.src}" alt="${title}"/>
+                <img hidden id="backdrop" class="card-img-top img-fluid" src="${backDropImage.src}" alt="${title}"/>
+                <p hidden id="info" > ${info}</p>
+            </a>
             <div class="card-body">
                 <p class="card-text text-left">&#11088; &nbsp; ${vote}</p>
-                <h5 class="card-title">${title}</h5>
+                <h6 class="card-title">${title}</h6>
             </div>
         </div>
+        
     `;
     if(counter%2 == 0){
         movieArea.innerHTML += `
