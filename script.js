@@ -5,6 +5,7 @@ const movieArea = document.querySelector("#movie-area");
 const button = document.getElementById('moreMovies');
 const form = document.querySelector("form");
 const header = document.getElementById('mainHeading');
+const resetButton = document.getElementById('reset');
 
 // function getRequest(){
 // // GET Request.
@@ -94,12 +95,12 @@ function generateHTML(movieData) {
             finalText = finalText + "+" + value;
         }
       }); 
-    console.log(finalText);
+    //console.log(finalText);
     let finalUrl = url + String(finalText);
     const response = await fetch(finalUrl);
     const searchedMovies = await response.json();
-    console.log(searchedMovies);
-    console.log(finalUrl);
+    //console.log(searchedMovies);
+    //console.log(finalUrl);
     generateHTML2(searchedMovies);
 
   }
@@ -150,10 +151,16 @@ function generateHTML(movieData) {
   }
 
 window.onload = function () {
-    getRequest2()
+    getRequest2();
     button.addEventListener('click', event => {
         currentPage +=1; //update page index
-        getRequest2()
+        getRequest2();
+      });
+    resetButton.addEventListener('click', event => {
+        currentPage = 1; //update page index
+        movieArea.innerHTML = ``;
+        getRequest2();
+        header.innerText = "Now Playing" ;
       });
     form.addEventListener("submit", getResults);
     
