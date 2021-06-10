@@ -195,7 +195,7 @@ function generateHTML(movieData) {
 
     movieArea.innerHTML += `
         <div class="card mb-4" > 
-            <a class="btn btn-primary" onclick="exampleOnclick(this,'${title}','${release_Date}','${vote}')">
+            <a class="btn btn-success" onclick="exampleOnclick(this,'${title}','${release_Date}','${vote}')">
                 <img class="card-img-top img-fluid" src="${myimage.src}" alt="${title}"/>
                 <img hidden id="backdrop" class="card-img-top img-fluid" src="${backDropImage.src}" alt="${title}"/>
                 <p hidden id="info" > ${info}</p>
