@@ -32,7 +32,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://kschrock.githu
 
 `TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
 
-![](https://media.giphy.com/media/LyGQS7UIyj6gQhxjpr/giphy.gif)
+![](https://media.giphy.com/media/yo2NaohO7LLbHwfTp4/giphy.gif)
 
 
 
