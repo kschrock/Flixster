@@ -1,4 +1,6 @@
-var currentPage = 1
+var currentPage = 1;
+var search = false;
+var searchTerm = '';
 const movieArea = document.querySelector("#movie-area");
 const button = document.getElementById('moreMovies');
 const form = document.querySelector("form");
@@ -141,6 +143,7 @@ function generateHTML(movieData) {
 
   async function getResults(event){
     event.preventDefault();
+    currentPage = 1;
     let apiKey = "api_key=e0fd5a0f660971376c9527b4a5b7e104"
     let url = "https://api.themoviedb.org/3/search/movie?api_key=e0fd5a0f660971376c9527b4a5b7e104&certification_country=US&certification&query=";
     let inputText = event.target.searchMovie.value;
@@ -157,10 +160,20 @@ function generateHTML(movieData) {
             finalText = finalText + "+" + value;
         }
       }); 
-    let finalUrl = url + String(finalText);
+    let finalUrl = url + String(finalText) + '&page='+ String(currentPage);
     const response = await fetch(finalUrl);
     const searchedMovies = await response.json();
     movieArea.innerHTML = ``;
+    search = true;
+    searchTerm = url + String(finalText) + '&page=';
+    generateHTML(searchedMovies);
+
+  }
+
+  async function getResults2(){
+    let url = searchTerm + String(currentPage);
+    const response = await fetch(url);
+    const searchedMovies = await response.json();
     generateHTML(searchedMovies);
 
   }
@@ -168,16 +181,25 @@ function generateHTML(movieData) {
 
 window.onload = function () {
     getRequest();
+
     button.addEventListener('click', event => {
         currentPage +=1; //update page index
-        getRequest();
+        if(search == true){
+            getResults2();
+        }
+        else{
+            getRequest();
+        }
       });
+
     resetButton.addEventListener('click', event => {
         currentPage = 1; //update page index
         movieArea.innerHTML = ``;
+        search = false;
         getRequest();
         header.innerText = "Now Playing" ;
       });
+      
     form.addEventListener("submit", getResults);
     
     
