@@ -1,31 +1,11 @@
 var currentPage = 1
-var objs = []
-let tempData = null;
 const movieArea = document.querySelector("#movie-area");
 const button = document.getElementById('moreMovies');
 const form = document.querySelector("form");
 const header = document.getElementById('mainHeading');
 const resetButton = document.getElementById('reset');
 
-// function getRequest(){
-// // GET Request.
-// url = 'https://api.themoviedb.org/3/discover/movie?api_key=e0fd5a0f660971376c9527b4a5b7e104&certification_country=US&certification.lte=G&sort_by=popularity.desc&page='+ String(currentPage)
-// fetch(url)
-//     // Handle success
-//     .then(response => response.json())  // convert to json
-//     //.then(json => objs.push(json))    //push data to list
-//     .then(function(data) {
-//         tempData = data;
-//         objs.push(tempData);
-//        // console.log(tempData);
-//         getData(tempData)
-
-//     })
-//     .catch(err => console.log('Request Failed', err)); // Catch errors
-
-// }
-
-async function getRequest2(){
+async function getRequest(){
     let apiKey = "api_key=e0fd5a0f660971376c9527b4a5b7e104";
     let url = 'https://api.themoviedb.org/3/discover/movie?api_key=e0fd5a0f660971376c9527b4a5b7e104&certification_country=US&certification.lte=G&sort_by=popularity.desc&page='+ String(currentPage);
 const response = await fetch(url);
@@ -52,10 +32,12 @@ function generateHTML(movieData) {
      
     movieArea.innerHTML += `
         <div class="card mb-4" > 
-            <a class="btn btn-success" onclick="exampleOnclick(this,'${title}','${release_Date}','${vote}')">
-                <img class="card-img-top img-fluid" src="${myimage.src}" alt="${title}"/>
+            <a class="btn btn-success" onclick="exampleOnclick(this)">
+                <img id="poster" class="card-img-top img-fluid" src="${myimage.src}" alt="${title}"/>
                 <img hidden id="backdrop" class="card-img-top img-fluid" src="${backDropImage.src}" alt="${title}"/>
                 <p hidden id="info" > ${info}</p>
+                <p hidden id="vote" > ${vote}</p>
+                <p hidden id="release_Date" > ${release_Date}</p>
             </a>
             <div class="card-body">
                 <p class="card-text text-left">&#11088; &nbsp; ${vote}</p>
@@ -89,12 +71,18 @@ function generateHTML(movieData) {
 }
   }
 
-  function exampleOnclick(btn, movieTitle, movieRelease, movieRated) {
+  function exampleOnclick(btn) {
     var name = btn.innerHTML;
     var backdrop = btn.querySelector('#backdrop').src;
+    let movieTitle = btn.querySelector('#backdrop').alt;
+    if(backdrop.includes("null")) {
+        backdrop = btn.querySelector('#poster').src; 
+    }
+    // console.log(btn.querySelector('#poster').src);
+    // console.log(backdrop);
+    let movieRelease = btn.querySelector('#release_Date').textContent;
+    let movieRated = btn.querySelector('#vote').textContent;
     let movieString = "| " + movieRelease + " | " + "&#11088; &nbsp;" + movieRated + " |";
-    let backDropImage = new Image();
-     backDropImage.src = 'https://image.tmdb.org/t/p/w500/' + backdrop;
     var info = btn.querySelector('#info').textContent;
     var exampleModal = getExampleModal();
     // Init the modal if it hasn't been already.
@@ -109,7 +97,7 @@ function generateHTML(movieData) {
         '</div>' +
         '<div class="modal-body">' +
         '<div class="modal-content modal-popout-bg">' +
-        '<img class="card-img-top img-fluid" src="'+ backDropImage.src+ '" alt="${title}"/>' +
+        '<img class="card-img-top img-fluid" src="'+ backdrop + '" alt="${title}"/>' +
         '</div>' +
         '<p>' +
         movieString + 
@@ -172,76 +160,22 @@ function generateHTML(movieData) {
     let finalUrl = url + String(finalText);
     const response = await fetch(finalUrl);
     const searchedMovies = await response.json();
-    generateHTML2(searchedMovies);
-
-  }
-
-  function generateHTML2(movieData) {
-    let i = 0;
-    let counter = 1
     movieArea.innerHTML = ``;
-    for(i; i<movieData.results.length; i++){
-    let title = movieData.results[i].title;
-    let poster_path = movieData.results[i].poster_path;
-    let backdrop_path = movieData.results[i].backdrop_path;
-    let vote = movieData.results[i].vote_average;
-    let info = movieData.results[i].overview;
-    let release_Date = movieData.results[i].release_date;
-    let myimage = new Image();
-     myimage.src = 'https://image.tmdb.org/t/p/w500/' + poster_path;
-     //console.log(movieData)
-    let backDropImage = new Image();
-    backDropImage.src = 'https://image.tmdb.org/t/p/w500/' + backdrop_path;
+    generateHTML(searchedMovies);
 
-    movieArea.innerHTML += `
-        <div class="card mb-4" > 
-            <a class="btn btn-success" onclick="exampleOnclick(this,'${title}','${release_Date}','${vote}')">
-                <img class="card-img-top img-fluid" src="${myimage.src}" alt="${title}"/>
-                <img hidden id="backdrop" class="card-img-top img-fluid" src="${backDropImage.src}" alt="${title}"/>
-                <p hidden id="info" > ${info}</p>
-            </a>
-            <div class="card-body">
-                <p class="card-text text-left">&#11088; &nbsp; ${vote}</p>
-                <h6 class="card-title">${title}</h6>
-            </div>
-        </div>
-        
-    `;
-    if(counter%2 == 0){
-        movieArea.innerHTML += `
-        <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm--></div>
-        `
-    }
-    if(counter%3 == 0){
-        movieArea.innerHTML += `
-        <div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md--></div>
-        `
-    }
-    if(counter%4 == 0){
-        movieArea.innerHTML += `
-        <div class="w-100 d-none d-lg-block d-xl-none"><!-- wrap every 4 on lg--></div>
-        `
-    }
-    if(counter%5 == 0){
-        movieArea.innerHTML += `
-        <div class="w-100 d-none d-xl-block"><!-- wrap every 5 on xl--></div>
-        `
-    }
-
-    counter += 1 //update index
-}
   }
+
 
 window.onload = function () {
-    getRequest2();
+    getRequest();
     button.addEventListener('click', event => {
         currentPage +=1; //update page index
-        getRequest2();
+        getRequest();
       });
     resetButton.addEventListener('click', event => {
         currentPage = 1; //update page index
         movieArea.innerHTML = ``;
-        getRequest2();
+        getRequest();
         header.innerText = "Now Playing" ;
       });
     form.addEventListener("submit", getResults);
