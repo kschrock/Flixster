@@ -51,6 +51,8 @@ Add your response here
 
 - Add any links to open-source libraries used in your project.
 
-### Shout out
+### Bootstrap v4 
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+### Shoutout to Matt & Tirumari for teaching us HTML/Javascript/CSS
