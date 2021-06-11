@@ -32,8 +32,17 @@ Deployed Application (optional): [Flixster Deployed Site](https://kschrock.githu
 
 `TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
 
-![](https://media.giphy.com/media/yo2NaohO7LLbHwfTp4/giphy.gif)
+![](https://media.giphy.com/media/ls7RlwNYLuOI1zYjgB/giphy.gif)
+**Main Page w/ main card layout/functions**
 
+![](https://media.giphy.com/media/yo2NaohO7LLbHwfTp4/giphy.gif)
+**Search function and Now Playing button**
+
+![](https://media.giphy.com/media/iAXhNj3YVoUJtn8rBk/giphy.gif)
+**Responsiveness of Cards**
+
+![](https://media.giphy.com/media/RyJKdtmU06ABJLPjAd/giphy.gif)
+**Load More button**
 
 
 ### Reflection
