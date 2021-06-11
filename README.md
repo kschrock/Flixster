@@ -1,10 +1,9 @@
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
 
 ## Week 1 Assignment: Flixster
 
 Submitted by: **Kordell Schrock**
 
-Estimated time spent: **12** hours spent in total
+Estimated time spent: **13** hours spent in total
 
 Deployed Application (optional): [Flixster Deployed Site](https://kschrock.github.io/Flixster/)
 
@@ -30,8 +29,6 @@ Deployed Application (optional): [Flixster Deployed Site](https://kschrock.githu
 
 ### Walkthough GIF
 
-`TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
-
 ![](https://media.giphy.com/media/ls7RlwNYLuOI1zYjgB/giphy.gif)
 **Main Page w/ main card layout/functions**
 
@@ -56,9 +53,11 @@ The lab the really clicked everything for me was lab 3 dealing with API and appe
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
 If I had more time, I would look into the 404 error when the API does not have an image or other information about the movie, so then I would fix this error. Also, I would have more checking involved
-if a variables has null information I would make a default value to like 0 or not found. 
+if a variables has null information I would make a default value to like 0 or not found. I would also implement having embedded videos. 
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
+
+Overall, I think the project demo went well! 😎 I do think I could have made the UI better along with having embedded vidoes in the pop-ups. I seen another person create the search input to query automatically while typing, which I thought was cool!
 
 
 ### Open-source libraries used
@@ -66,7 +65,7 @@ if a variables has null information I would make a default value to like 0 or no
 - Add any links to open-source libraries used in your project.
 
 ### Bootstrap v4 
-### Google fonts
+### Google font
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
