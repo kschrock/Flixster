@@ -32,7 +32,9 @@ Deployed Application (optional): [Flixster Deployed Site](https://kschrock.githu
 
 `TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
 
-<img src="YOUR_GIF_URL_HERE" width=250><br>
+<img src="https://imgur.com/gallery/8QXzW80" width=250><br>
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/8QXzW80"  ><a href="//imgur.com/a/8QXzW80">Flixster Main</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
 
 ### Reflection
 
