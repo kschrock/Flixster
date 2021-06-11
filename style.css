@@ -10,12 +10,12 @@ h6 {
     padding: 4px 10px;
     display: inline-block;
     border-radius: 50px;
-    background-color: #00B1FF;
+    background-color: #5cb85c;
     color: white;
     border: 5px solid white;
     transition: border 0.2s ease;
   }
   .button2:hover {
-    border: 5px solid #81D9FF;
+    border: 5px solid #d9534f;
     cursor: pointer;
   }
