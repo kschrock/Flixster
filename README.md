@@ -4,7 +4,7 @@
 
 Submitted by: **Kordell Schrock**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **12** hours spent in total
 
 Deployed Application (optional): [Flixster Deployed Site](https://kschrock.github.io/Flixster/)
 
@@ -26,6 +26,7 @@ Deployed Application (optional): [Flixster Deployed Site](https://kschrock.githu
 - [x] Improve the user experience through CSS & animation.
 - [ ] Allow movie video trailers to be played using [embedded YouTube](https://support.google.com/youtube/answer/171780?hl=en)
 - [ ] Implement anything else that you can get done to improve the app functionality!
+- [x] Made Search Movies load more search related Movies on next page.
 
 ### Walkthough GIF
 
@@ -37,21 +38,24 @@ Deployed Application (optional): [Flixster Deployed Site](https://kschrock.githu
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I felt that everything in class we learned applied to this assignment. I think if we went over a libray like Bootstrap it would have helped people for the CSS part because CSS seems to have alot to learn. While Bootstrap comes with alot of bulit in CSS for quick building. 
+
+The lab the really clicked everything for me was lab 3 dealing with API and appending gifs. 
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time, I would look into the 404 error when the API does not have an image or other information about the movie, so then I would fix this error. Also, I would have more checking involved
+if a variables has null information I would make a default value to like 0 or not found. 
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
 
 ### Open-source libraries used
 
 - Add any links to open-source libraries used in your project.
 
 ### Bootstrap v4 
+### Google fonts
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
 
